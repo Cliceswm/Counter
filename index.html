@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        #counter {
+            font-size: 72px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 20px 0;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        #decrease {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        #decrease:hover {
+            background-color: #c82333;
+        }
+        
+        #reset {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        #reset:hover {
+            background-color: #5a6268;
+        }
+        
+        #increase {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        #increase:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <div id="counter">0</div>
+        <div class="buttons">
+            <button id="decrease">DECREASE</button>
+            <button id="reset">RESET</button>
+            <button id="increase">INCREASE</button>
+        </div>
+    </div>
+
+    <script>
+        // Selecionar elementos
+        const counterDisplay = document.getElementById('counter');
+        const decreaseBtn = document.getElementById('decrease');
+        const resetBtn = document.getElementById('reset');
+        const increaseBtn = document.getElementById('increase');
+        
+        // Inicializar contador
+        let count = 0;
+        
+        // Função para atualizar o display
+        function updateDisplay() {
+            counterDisplay.textContent = count;
+            
+            // Mudar cor baseada no valor
+            if (count > 0) {
+                counterDisplay.style.color = '#28a745'; // Verde
+            } else if (count < 0) {
+                counterDisplay.style.color = '#dc3545'; // Vermelho
+            } else {
+                counterDisplay.style.color = '#007bff'; // Azul original
+            }
+        }
+        
+        // Event listeners
+        decreaseBtn.addEventListener('click', () => {
+            count--;
+            updateDisplay();
+        });
+        
+        resetBtn.addEventListener('click', () => {
+            count = 0;
+            updateDisplay();
+        });
+        
+        increaseBtn.addEventListener('click', () => {
+            count++;
+            updateDisplay();
+        });
+        
+        // Inicializar display
+        updateDisplay();
+    </script>
+</body>
+</html>
